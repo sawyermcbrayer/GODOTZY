@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/EasterEggSuccessSound.mp3-38906f6c3006cf201bfb6e4de8d910eb.mp3str"
+
+[deps]
+
+source_file="res://CHGAssets/Sounds/EasterEggSuccessSound.mp3"
+dest_files=[ "res://.import/EasterEggSuccessSound.mp3-38906f6c3006cf201bfb6e4de8d910eb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

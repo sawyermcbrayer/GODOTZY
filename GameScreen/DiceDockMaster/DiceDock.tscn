@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameScreen/Pictures/TreasureChest.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/HVD_Comic_Serif_Pro.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="DiceDock" type="VBoxContainer"]
+margin_right = 110.0
+margin_bottom = 125.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 110.0
+margin_bottom = 134.0
+alignment = 1
+
+[node name="DiceDockBGColor" type="ColorRect" parent="VBoxContainer"]
+margin_right = 110.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 110, 110 )
+color = Color( 0.729412, 0.541176, 0.145098, 1 )
+
+[node name="BootPicture" type="TextureRect" parent="VBoxContainer/DiceDockBGColor"]
+margin_right = 110.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 110, 110 )
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="LockDiceButton" type="Button" parent="VBoxContainer"]
+margin_top = 114.0
+margin_right = 110.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LockDiceLabel" type="Label" parent="VBoxContainer/LockDiceButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -15.0
+margin_right = 55.0
+margin_bottom = 15.0
+custom_colors/font_color_shadow = Color( 0.215686, 0.572549, 0.0156863, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 1 )
+text = "L o c k"
+align = 1
+valign = 1

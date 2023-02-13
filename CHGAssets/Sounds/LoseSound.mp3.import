@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/LoseSound.mp3-4ac0fff5868e0b1aeb6d3d6ff23f7721.mp3str"
+
+[deps]
+
+source_file="res://CHGAssets/Sounds/LoseSound.mp3"
+dest_files=[ "res://.import/LoseSound.mp3-4ac0fff5868e0b1aeb6d3d6ff23f7721.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

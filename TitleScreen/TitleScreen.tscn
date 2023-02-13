@@ -1,0 +1,139 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://TitleScreen/Buttons/ExitButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/HVD_Comic_Serif_Pro.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://TitleScreen/Buttons/NewGameButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TitleScreen/Buttons/OptionsButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TitleScreen/Pictures/PotOfGold.png" type="Texture" id=5]
+[ext_resource path="res://CHGAssets/Sounds/EasterEggSuccessSound.mp3" type="AudioStream" id=6]
+[ext_resource path="res://TitleScreen/Pictures/NewWackyWilly.png" type="Texture" id=7]
+[ext_resource path="res://TitleScreen/Buttons.gd" type="Script" id=8]
+[ext_resource path="res://TitleScreen/TitleScreen.gd" type="Script" id=9]
+[ext_resource path="res://CHGAssets/Sounds/TitleMusic.mp3" type="AudioStream" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 110
+outline_size = 5
+outline_color = Color( 0.858824, 0.654902, 0.0862745, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 9 )
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="EasterEggSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -437.0
+margin_top = -250.0
+margin_right = 437.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Menu"]
+margin_right = 874.0
+margin_bottom = 133.0
+rect_min_size = Vector2( 0, 32 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 0
+custom_fonts/font = SubResource( 1 )
+text = "Golden Dreams"
+align = 1
+valign = 1
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 137.0
+margin_right = 874.0
+margin_bottom = 450.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 874.0
+margin_bottom = 313.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 5
+alignment = 1
+script = ExtResource( 8 )
+
+[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 39.0
+margin_right = 874.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 360, 75 )
+
+[node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 119.0
+margin_right = 874.0
+margin_bottom = 194.0
+rect_min_size = Vector2( 360, 75 )
+
+[node name="ExitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 199.0
+margin_right = 874.0
+margin_bottom = 274.0
+rect_min_size = Vector2( 360, 75 )
+
+[node name="CharacterImage" type="CenterContainer" parent="Menu/CenterRow"]
+visible = false
+margin_left = 439.0
+margin_right = 874.0
+margin_bottom = 313.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Characters" type="TextureRect" parent="Menu/CenterRow/CharacterImage"]
+margin_left = 111.0
+margin_top = 31.0
+margin_right = 324.0
+margin_bottom = 281.0
+texture = ExtResource( 7 )
+stretch_mode = 4
+flip_h = true
+
+[node name="EasterEggLabel" type="Label" parent="Menu/CenterRow/CharacterImage"]
+margin_left = 159.0
+margin_top = 112.0
+margin_right = 276.0
+margin_bottom = 201.0
+custom_colors/font_color = Color( 0.588235, 0.917647, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 2 )
+text = "YOU GOT A
+GODOTZY!
+HERE IS YOUR
+EASTER EGG!"
+align = 1
+valign = 1
+uppercase = true
+
+[connection signal="finished" from="EasterEggSound" to="." method="_on_EasterEggSound_finished"]
+[connection signal="focus_entered" from="Menu/CenterRow/Buttons" to="Menu/CenterRow/Buttons" method="_on_Buttons_focus_entered"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/NewGameButton" to="Menu/CenterRow/Buttons" method="_on_NewGameButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/OptionsButton" to="Menu/CenterRow/Buttons" method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/ExitButton" to="Menu/CenterRow/Buttons" method="_on_ExitButton_pressed"]

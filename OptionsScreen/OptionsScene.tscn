@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://OptionsScreen/OptionsScene.gd" type="Script" id=1]
+[ext_resource path="res://OptionsScreen/Pictures/PotOfGold.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/HVD_Comic_Serif_Pro.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://CHGAssets/Sounds/TitleMusic.mp3" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="OptionsScreenMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="OptionsMenuBG" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+
+[node name="OptionsContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="OptionsMenuContainer" type="HBoxContainer" parent="OptionsContainer"]
+margin_top = 220.0
+margin_right = 1024.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OptionsMenuBGColor" type="ColorRect" parent="OptionsContainer/OptionsMenuContainer"]
+margin_left = 387.0
+margin_right = 637.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 250, 160 )
+color = Color( 0.819608, 0.709804, 0.117647, 1 )
+
+[node name="OptionsListContainer" type="VBoxContainer" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor"]
+margin_right = 250.0
+margin_bottom = 161.0
+rect_min_size = Vector2( 250, 0 )
+alignment = 1
+
+[node name="OptionLabel" type="VBoxContainer" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer"]
+margin_top = 28.0
+margin_right = 250.0
+margin_bottom = 50.0
+alignment = 1
+
+[node name="MusicToggleDescript" type="Label" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer/OptionLabel"]
+margin_right = 250.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_fonts/font = SubResource( 1 )
+text = "Mute Music & SFX:"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="MusicToggle" type="VBoxContainer" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer"]
+margin_top = 54.0
+margin_right = 250.0
+margin_bottom = 78.0
+alignment = 1
+
+[node name="MusicToggleBoxContainer" type="HBoxContainer" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer/MusicToggle"]
+margin_right = 250.0
+margin_bottom = 24.0
+alignment = 1
+
+[node name="MusicToggleBox" type="CheckBox" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer/MusicToggle/MusicToggleBoxContainer"]
+margin_left = 113.0
+margin_right = 137.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+
+[node name="MainMenuButton" type="VBoxContainer" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer"]
+margin_top = 82.0
+margin_right = 250.0
+margin_bottom = 132.0
+alignment = 1
+
+[node name="Button" type="Button" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer/MainMenuButton"]
+margin_right = 250.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+
+[node name="ExitMenuLabel" type="Label" parent="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer/MainMenuButton/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer/MusicToggle/MusicToggleBoxContainer/MusicToggleBox" to="." method="_on_MusicToggleBox_pressed"]
+[connection signal="pressed" from="OptionsContainer/OptionsMenuContainer/OptionsMenuBGColor/OptionsListContainer/MainMenuButton/Button" to="." method="_on_Button_pressed"]

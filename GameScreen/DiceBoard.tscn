@@ -1,0 +1,367 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://GameScreen/DiceDockMaster/DiceDock1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameScreen/DiceDockMaster/DiceDock2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameScreen/DiceDockMaster/DiceDock3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameScreen/DiceDockMaster/DiceDock5.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameScreen/DiceDockMaster/DiceDock4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GameScreen/Pictures/CasinoBackground.png" type="Texture" id=6]
+[ext_resource path="res://GameScreen/DiceRowContainer.gd" type="Script" id=7]
+[ext_resource path="res://GameScreen/Buttons/RollButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GameScreen/Buttons/InstructionsButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GameScreen/ButtonRowContainer2.gd" type="Script" id=10]
+[ext_resource path="res://GameScreen/DiceBoard.gd" type="Script" id=11]
+[ext_resource path="res://GameScreen/Buttons/GameQuitButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://CHGAssets/Sounds/GameMusic.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Fonts/HVD_Comic_Serif_Pro.otf" type="DynamicFontData" id=14]
+[ext_resource path="res://GameScreen/InvalidPopUp.gd" type="Script" id=32]
+[ext_resource path="res://CHGAssets/Sounds/dieThrow1.ogg" type="AudioStream" id=33]
+[ext_resource path="res://CHGAssets/Sounds/WinSound.mp3" type="AudioStream" id=34]
+[ext_resource path="res://CHGAssets/Sounds/LoseSound.mp3" type="AudioStream" id=35]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 18
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 18
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[node name="DiceBoard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="DiceBoardMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = 1.0
+
+[node name="DiceRollSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 33 )
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 34 )
+volume_db = 1.0
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 35 )
+volume_db = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+stretch_mode = 1
+
+[node name="DiceBoardContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -497.0
+margin_top = -285.0
+margin_right = 497.0
+margin_bottom = 285.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="DiceBoardScoreHContainer" type="HBoxContainer" parent="DiceBoardContainer"]
+margin_top = 82.0
+margin_right = 994.0
+margin_bottom = 205.0
+alignment = 1
+
+[node name="DiceBoardScoreVContainer" type="VBoxContainer" parent="DiceBoardContainer/DiceBoardScoreHContainer"]
+margin_left = 378.0
+margin_right = 616.0
+margin_bottom = 123.0
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="DiceBoardContainer/DiceBoardScoreHContainer/DiceBoardScoreVContainer"]
+margin_right = 238.0
+margin_bottom = 123.0
+custom_colors/font_color_shadow = Color( 0.776471, 0.690196, 0.133333, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = SubResource( 2 )
+text = "Total Score: 0 
+Turn Score: 0
+Combo:"
+align = 1
+valign = 1
+
+[node name="DiceRowContainer" type="HBoxContainer" parent="DiceBoardContainer"]
+margin_top = 209.0
+margin_right = 994.0
+margin_bottom = 409.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+custom_constants/separation = 50
+alignment = 1
+script = ExtResource( 7 )
+
+[node name="DiceDock1" parent="DiceBoardContainer/DiceRowContainer" instance=ExtResource( 1 )]
+margin_left = 122.0
+margin_right = 232.0
+margin_bottom = 200.0
+
+[node name="DiceDock2" parent="DiceBoardContainer/DiceRowContainer" instance=ExtResource( 2 )]
+margin_left = 282.0
+margin_right = 392.0
+margin_bottom = 200.0
+
+[node name="DiceDock3" parent="DiceBoardContainer/DiceRowContainer" instance=ExtResource( 3 )]
+margin_left = 442.0
+margin_right = 552.0
+margin_bottom = 200.0
+
+[node name="DiceDock4" parent="DiceBoardContainer/DiceRowContainer" instance=ExtResource( 5 )]
+margin_left = 602.0
+margin_right = 712.0
+margin_bottom = 200.0
+
+[node name="DiceDock5" parent="DiceBoardContainer/DiceRowContainer" instance=ExtResource( 4 )]
+margin_left = 762.0
+margin_right = 872.0
+margin_bottom = 200.0
+
+[node name="ButtonRowContainer2" type="HBoxContainer" parent="DiceBoardContainer"]
+margin_top = 413.0
+margin_right = 994.0
+margin_bottom = 488.0
+rect_min_size = Vector2( 0, 75 )
+custom_constants/separation = 35
+alignment = 1
+script = ExtResource( 10 )
+
+[node name="RollButton" parent="DiceBoardContainer/ButtonRowContainer2" instance=ExtResource( 8 )]
+margin_left = 162.0
+margin_right = 362.0
+margin_bottom = 75.0
+
+[node name="InstructionsButton" parent="DiceBoardContainer/ButtonRowContainer2" instance=ExtResource( 9 )]
+margin_left = 397.0
+margin_right = 597.0
+margin_bottom = 75.0
+
+[node name="GameQuitButton" parent="DiceBoardContainer/ButtonRowContainer2" instance=ExtResource( 12 )]
+margin_left = 632.0
+margin_right = 832.0
+margin_bottom = 75.0
+
+[node name="InstructionsPopUp" type="PopupDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -387.5
+margin_top = -280.0
+margin_right = 387.5
+margin_bottom = 280.0
+
+[node name="InstructionsVContainer" type="VBoxContainer" parent="InstructionsPopUp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -387.5
+margin_top = -280.0
+margin_right = 387.5
+margin_bottom = 280.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="InstructionsHContainer" type="HBoxContainer" parent="InstructionsPopUp/InstructionsVContainer"]
+margin_right = 775.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ScrollableContainer" type="ScrollContainer" parent="InstructionsPopUp/InstructionsVContainer/InstructionsHContainer"]
+margin_left = 4.0
+margin_right = 771.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="InstructionLabelContainer" type="VBoxContainer" parent="InstructionsPopUp/InstructionsVContainer/InstructionsHContainer/ScrollableContainer"]
+margin_right = 755.0
+margin_bottom = 1142.0
+rect_min_size = Vector2( 755, 0 )
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="InstructionsPopUp/InstructionsVContainer/InstructionsHContainer/ScrollableContainer/InstructionLabelContainer"]
+margin_right = 755.0
+margin_bottom = 51.0
+custom_colors/font_color_shadow = Color( 0.356863, 0.701961, 0.133333, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 0
+custom_fonts/font = SubResource( 1 )
+text = "Godotzy!"
+align = 1
+valign = 1
+
+[node name="InstructionsLabel" type="Label" parent="InstructionsPopUp/InstructionsVContainer/InstructionsHContainer/ScrollableContainer/InstructionLabelContainer"]
+margin_top = 55.0
+margin_right = 755.0
+margin_bottom = 1088.0
+custom_fonts/font = SubResource( 5 )
+text = "
+The name of the game is Godotzy!
+
+ There are a total of 7 \"combinations\" that you can achieve in this game. To begin you will hit the \"Roll Dice\" button to reveal the dice faces. On each subsequent dice roll your total score, current turn score, and combination type will be displayed - if possible. You can lock between 1-5 die prior to each roll to quickly achieve high scores and combinations, but remember, at least one die must be unlocked to get new dice!
+
+Your TURN Score is:
+	-The sum of all dice THIS turn
+	
+Your TOTAL Score  is:
+	-The sum of all TURN scores
+	
+Your COMBINATION Type can be one of the following:
+
+		- Two of a Kind: 2 dice in hand with the same face 
+		
+		- Three of a Kind: 3 dice in hand with the same face
+		
+		- Four of a Kind: 4 dice in hand  with the same face
+		
+		- GODOTZY!: 5 dice in hand with the same face
+		
+		- Full House: 3 dice in hand with same face AND 2 different dice in hand with same face (Ex: Three dice of value 5 AND Two dice of value 6)
+		
+		-Small Straight: Dice values in hand of 1, 2, 3, 4, 5
+		
+		-Large Straight: Dice values in hand of 2, 3, 4, 5, 6
+
+
+"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="CloseInstructionsButton" type="Button" parent="InstructionsPopUp/InstructionsVContainer/InstructionsHContainer/ScrollableContainer/InstructionLabelContainer"]
+margin_top = 1092.0
+margin_right = 755.0
+margin_bottom = 1142.0
+rect_min_size = Vector2( 0, 50 )
+icon_align = 1
+
+[node name="CloseInstructionLabel" type="Label" parent="InstructionsPopUp/InstructionsVContainer/InstructionsHContainer/ScrollableContainer/InstructionLabelContainer/CloseInstructionsButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "Close	"
+align = 1
+valign = 1
+
+[node name="InvalidPopUp" type="Popup" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -387.5
+margin_top = -300.0
+margin_right = 387.5
+margin_bottom = 300.0
+rect_min_size = Vector2( 775, 600 )
+script = ExtResource( 32 )
+
+[node name="InvalidPopUpBG" type="ColorRect" parent="InvalidPopUp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -387.5
+margin_top = -280.0
+margin_right = 387.5
+margin_bottom = 280.0
+rect_min_size = Vector2( 775, 300 )
+color = Color( 0.741176, 0.643137, 0, 1 )
+
+[node name="PopUpMenuContainer" type="VBoxContainer" parent="InvalidPopUp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -225.0
+margin_top = -192.5
+margin_right = 225.0
+margin_bottom = 192.5
+alignment = 1
+
+[node name="InvalidPopUpLabelContainer" type="VBoxContainer" parent="InvalidPopUp/PopUpMenuContainer"]
+margin_top = 31.0
+margin_right = 450.0
+margin_bottom = 300.0
+alignment = 1
+
+[node name="InvalidDescriptionLabel" type="Label" parent="InvalidPopUp/PopUpMenuContainer/InvalidPopUpLabelContainer"]
+margin_right = 450.0
+margin_bottom = 269.0
+custom_fonts/font = SubResource( 3 )
+text = "All (5) dice are currently locked.
+
+Unlock at least (1) of them to continue rolling.
+
+Please see instructions for more detailed game information!
+"
+align = 1
+autowrap = true
+
+[node name="InvalidButtonContainer" type="VBoxContainer" parent="InvalidPopUp/PopUpMenuContainer"]
+margin_top = 304.0
+margin_right = 450.0
+margin_bottom = 354.0
+alignment = 1
+
+[node name="InvalidExitButton" type="Button" parent="InvalidPopUp/PopUpMenuContainer/InvalidButtonContainer"]
+unique_name_in_owner = true
+margin_right = 450.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="InvalidExitButtonLabel" type="Label" parent="InvalidPopUp/PopUpMenuContainer/InvalidButtonContainer/InvalidExitButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "Return to Game"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="DiceBoardContainer/ButtonRowContainer2/RollButton" to="DiceBoardContainer/DiceRowContainer" method="_on_RollButton_pressed"]
+[connection signal="pressed" from="DiceBoardContainer/ButtonRowContainer2/RollButton" to="DiceBoardContainer/ButtonRowContainer2" method="_on_RollButton_pressed"]
+[connection signal="pressed" from="DiceBoardContainer/ButtonRowContainer2/InstructionsButton" to="." method="_on_InstructionsButton_pressed"]
+[connection signal="pressed" from="DiceBoardContainer/ButtonRowContainer2/GameQuitButton" to="DiceBoardContainer/ButtonRowContainer2" method="_on_GameQuitButton_pressed"]
+[connection signal="pressed" from="InstructionsPopUp/InstructionsVContainer/InstructionsHContainer/ScrollableContainer/InstructionLabelContainer/CloseInstructionsButton" to="." method="_on_CloseInstructionsButton_pressed"]
+[connection signal="pressed" from="InvalidPopUp/PopUpMenuContainer/InvalidButtonContainer/InvalidExitButton" to="InvalidPopUp" method="_on_InvalidExitButton_pressed"]

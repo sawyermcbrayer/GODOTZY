@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GameScreen/DiceDockMaster/DiceDock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GameScreen/DiceDockMaster/DiceDock4.gd" type="Script" id=2]
+
+[node name="DiceDock4" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" parent="." index="0"]
+margin_top = 7.0
+margin_bottom = 117.0
+
+[node name="LockDiceButton" parent="VBoxContainer" index="1"]
+visible = false
+
+[connection signal="pressed" from="VBoxContainer/LockDiceButton" to="." method="_on_LockDiceButton_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GameMusic.mp3-1709286071a116c868ff7c59f2044f53.mp3str"
+
+[deps]
+
+source_file="res://CHGAssets/Sounds/GameMusic.mp3"
+dest_files=[ "res://.import/GameMusic.mp3-1709286071a116c868ff7c59f2044f53.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

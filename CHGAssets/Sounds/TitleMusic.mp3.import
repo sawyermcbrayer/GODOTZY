@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TitleMusic.mp3-3b40e901798926c5488ffb8af3102428.mp3str"
+
+[deps]
+
+source_file="res://CHGAssets/Sounds/TitleMusic.mp3"
+dest_files=[ "res://.import/TitleMusic.mp3-3b40e901798926c5488ffb8af3102428.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

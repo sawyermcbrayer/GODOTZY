@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/WinSound.mp3-47dc951c099f2330f24c8dc1a7b96f1a.mp3str"
+
+[deps]
+
+source_file="res://CHGAssets/Sounds/WinSound.mp3"
+dest_files=[ "res://.import/WinSound.mp3-47dc951c099f2330f24c8dc1a7b96f1a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
